@@ -1,4 +1,4 @@
-﻿import {PlaceOffer} from '../../common/types.ts';
+﻿import {PlaceOffer} from '@/api/types.ts';
 
 export default function PlaceCard(placeOffer: PlaceOffer): JSX.Element {
   return (

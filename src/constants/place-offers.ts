@@ -1,4 +1,4 @@
-﻿import {PlaceOffer, PlaceType} from '../common/types.ts';
+﻿import {PlaceOffer, PlaceType} from '@/api/types.ts';
 
 export const placeOffers: PlaceOffer[] = [
   {
