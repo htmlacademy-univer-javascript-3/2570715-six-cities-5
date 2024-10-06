@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 module.exports = {
-  env: { browser: true, es2022: true },
+  env: {browser: true, es2022: true},
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -18,7 +18,7 @@ module.exports = {
   overrides: [
     {
       files: [ '*test*' ],
-      rules: { '@typescript-eslint/unbound-method': 'off' }
+      rules: {'@typescript-eslint/unbound-method': 'off', 'react/no-unescaped-entities': 'off'}
     },
   ],
 }
