@@ -4,6 +4,7 @@
 }
 
 export type PlaceOffer = {
+    id: string;
     type: PlaceType;
     isFavorite: boolean;
     isPremium: boolean;
