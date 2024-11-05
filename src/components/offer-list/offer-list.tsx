@@ -2,14 +2,14 @@
 import {useState} from 'react';
 import PlaceCard from '@/components/place-card/place-card.tsx';
 
-export interface OfferList {
+export interface OfferListProps {
   offers: Offer[];
   page: string;
   width: number;
   height: number;
 }
 
-export default function OfferList({offers, page, width, height}: OfferList) {
+export default function OfferList({offers, page, width, height}: OfferListProps) {
   const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
   console.log(activeOffer);
   return (

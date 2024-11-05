@@ -15,4 +15,16 @@ export type Offer = {
     description: string;
     bedrooms: number;
     maxAdults: number;
+    city: City;
+};
+
+export type Location = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+};
+
+export type City = {
+  name: string;
+  location: Location;
 };

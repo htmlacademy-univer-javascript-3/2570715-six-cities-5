@@ -13,6 +13,14 @@ export const offers: Offer[] = [
     description: 'This beautiful and luxurious apartment is located in a prime location with stunning views. It is perfect for a relaxing getaway or a romantic weekend.',
     bedrooms: 5,
     maxAdults: 3,
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 43,
+        longitude: 53,
+        zoom: 8,
+      }
+    }
   },
   {
     id: '1c16024c-7b05-497a-a6d7-3d1fa32a6d27',
@@ -26,6 +34,14 @@ export const offers: Offer[] = [
     description: 'Experience the rustic charm of this wood and stone place. Perfect for nature lovers and those seeking a peaceful retreat.',
     bedrooms: 3,
     maxAdults: 1,
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 43,
+        longitude: 53,
+        zoom: 8,
+      }
+    }
   },
   {
     id: '092c6e53-e944-472e-bb8f-ddf222ebfb5d',
@@ -39,6 +55,14 @@ export const offers: Offer[] = [
     description: 'Enjoy the picturesque views of the canal from this lovely apartment on Prinsengracht. Close to all the major attractions and amenities.',
     bedrooms: 6,
     maxAdults: 5,
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 43,
+        longitude: 53,
+        zoom: 8,
+      }
+    }
   },
   {
     id: 'ebe277b0-dd20-4267-a89b-1d74a6a72246',
@@ -52,5 +76,13 @@ export const offers: Offer[] = [
     description: 'Indulge in luxury and comfort in this cozy apartment with a big bed. Perfect for a relaxing stay and a good night\'s sleep.',
     bedrooms: 13,
     maxAdults: 10,
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 43,
+        longitude: 53,
+        zoom: 8,
+      }
+    }
   }
 ];

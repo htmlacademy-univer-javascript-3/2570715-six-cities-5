@@ -1,13 +1,35 @@
 import Footer from '@/components/footer/footer.tsx';
 import Header from '@/components/header/header.tsx';
-import PlaceCard from '@/components/place-card/place-card.tsx';
 import {Offer} from '@/api/types.ts';
+import {groupBy} from '@/utils/utils.ts';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '@/constants/app-routes.ts';
+import PlaceCard from '@/components/place-card/place-card.tsx';
 
 export interface FavoritesScreenProps {
   offers: Offer[];
 }
 
 export default function FavoritesScreen({offers}: FavoritesScreenProps): JSX.Element {
+  const groupedCityOffers = groupBy(offers, (offer) => offer.city.name, (offer) => offer);
+
+  const cityOffers = Object.keys(groupedCityOffers).map((city) => (
+    <li className="favorites__locations-items" key={city}>
+      <div className="favorites__locations locations locations--current">
+        <div className="locations__item">
+          <Link className="locations__item-link" to={AppRoute.Root}>
+            <span>{city}</span>
+          </Link>
+        </div>
+      </div>
+      <div className="favorites__places">
+        {groupedCityOffers[city]
+          .filter((offer) => offer.isFavorite)
+          .map((offer) =>
+            <PlaceCard offer={offer} page={'favorites'} width={150} height={110} key={offer.id}/>)}
+      </div>
+    </li>));
+
   return (
     <div className="page">
       <Header/>
@@ -16,36 +38,7 @@ export default function FavoritesScreen({offers}: FavoritesScreenProps): JSX.Ele
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Amsterdam</span>
-                    </a>
-                  </div>
-                </div>
-                <div className="favorites__places">
-                  {offers.slice(0, 2)
-                    .filter((offer) => offer.isFavorite)
-                    .map((offer) =>
-                      <PlaceCard offer={offer} page={'favorites'} width={150} height={110} key={offer.id}/>)}
-                </div>
-              </li>
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Cologne</span>
-                    </a>
-                  </div>
-                </div>
-                <div className="favorites__places">
-                  {offers.slice(2, 10)
-                    .filter((offer) => offer.isFavorite)
-                    .map((offer) =>
-                      <PlaceCard offer={offer} page={'favorites'} width={150} height={110} key={offer.id}/>)}
-                </div>
-              </li>
+              {cityOffers}
             </ul>
           </section>
         </div>
