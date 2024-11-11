@@ -5,10 +5,15 @@ import {offers} from '@/mocks/offers.ts';
 import OfferList from '@/components/offer-list/offer-list.tsx';
 import ReviewList from '@/components/review-list/review-list.tsx';
 import {comments} from '@/mocks/comments.ts';
+import Map from '@/components/map/map.tsx';
+import {useState} from 'react';
+import {Offer} from '@/api/types.ts';
 
 export default function OfferScreen(): JSX.Element {
   const params = useParams();
-  const foundOffer = offers.find((p) => p.id === params.id);
+  const foundOffer = offers.find((offer) => offer.id === params.id);
+  const otherOffers = offers.filter((offer) => offer.id !== params.id);
+  const [selectedOtherOffer, setSelectedOtherOffer] = useState<Offer | undefined>(undefined);
   if (!foundOffer) {
     return <NotFoundScreen/>;
   }
@@ -145,7 +150,9 @@ export default function OfferScreen(): JSX.Element {
               <ReviewList comments={comments}/>
             </div>
           </div>
-          <section className="offer__map map"/>
+          <section className="offer__map map">
+            <Map city={otherOffers[0].city} offers={otherOffers} selectedOffer={undefined}/>
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
@@ -153,9 +160,9 @@ export default function OfferScreen(): JSX.Element {
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              <OfferList offers={offers.filter((offer) => offer.id !== foundOffer.id)}
-                selectedOffer={foundOffer}
-                setSelectedOffer={() => {}}
+              <OfferList offers={otherOffers}
+                selectedOffer={selectedOtherOffer}
+                setSelectedOffer={setSelectedOtherOffer}
                 page={'near-places'}
                 width={260}
                 height={200}
