@@ -1,8 +1,8 @@
 ﻿import {Offer} from '@/api/types.ts';
 import Header from '@/components/header/header.tsx';
 import OfferList from '@/components/offer-list/offer-list.tsx';
-import Map from "@/components/map/map.tsx";
-import {useState} from "react";
+import Map from '@/components/map/map.tsx';
+import {useState} from 'react';
 
 interface MainScreenProps {
   offers: Offer[];
@@ -84,13 +84,16 @@ export default function MainScreen({offers}: MainScreenProps): JSX.Element {
               </form>
               <div className="cities__places-list places__list tabs__content">
                 <OfferList offers={offers}
-                           selectedOffer={selectedOffer}
-                           setSelectedOffer={setSelectedOffer}
-                           page={'cities'} width={260} height={200}/>
+                  selectedOffer={selectedOffer}
+                  setSelectedOffer={setSelectedOffer}
+                  page={'cities'} width={260} height={200}
+                />
               </div>
             </section>
             <div className="cities__right-section">
-              <Map city={offers[0].city} offers={offers} selectedOffer={selectedOffer}/>
+              <section className="cities__map map">
+                <Map city={offers[0].city} offers={offers} selectedOffer={selectedOffer}/>
+              </section>
             </div>
           </div>
         </div>

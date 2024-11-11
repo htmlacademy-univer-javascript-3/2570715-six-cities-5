@@ -16,8 +16,9 @@ export default function OfferList({offers, selectedOffer, setSelectedOffer, page
     <>
       {offers.map((offer) => (
         <div key={offer.id}
-             onMouseEnter={() => setSelectedOffer(selectedOffer)}
-             onMouseLeave={() => setSelectedOffer(undefined)}>
+          onMouseEnter={() => setSelectedOffer(selectedOffer)}
+          onMouseLeave={() => setSelectedOffer(undefined)}
+        >
           <PlaceCard offer={offer} page={page} width={width} height={height}/>
         </div>
       ))}
