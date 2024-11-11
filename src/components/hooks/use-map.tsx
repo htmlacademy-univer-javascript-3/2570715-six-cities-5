@@ -1,6 +1,6 @@
 ﻿import {useEffect, useState, MutableRefObject, useRef} from 'react';
 import {Map, TileLayer} from 'leaflet';
-import {City} from "@/api/types.ts";
+import {City} from '@/api/types.ts';
 
 export default function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
@@ -26,7 +26,7 @@ export default function useMap(
       );
       instance.addLayer(layer);
       setMap(instance);
-      isRenderedRef.current = true
+      isRenderedRef.current = true;
     }
   }, [mapRef, city]);
   return map;
