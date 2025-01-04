@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
-import {updateSortOption} from '@/store/actions.ts';
+import {setSortOption} from '@/store/actions.ts';
 import {SortOption} from '@/constants/sort-option.ts';
 import {useAppDispatch} from '@/components/hooks/use-app-dispatch.tsx';
 
@@ -11,7 +11,7 @@ export default function SortOptions() {
   const dispatch = useAppDispatch();
 
   const handleSortOptionChoose = (sortOptions: SortOption) => {
-    dispatch(updateSortOption({sortOption: sortOptions}));
+    dispatch(setSortOption({sortOption: sortOptions}));
   };
 
   return (

@@ -7,8 +7,8 @@ import CityList from '@/components/city-list/city-list.tsx';
 import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 import {cities} from '@/mocks/cities.ts';
 import SortOptions from '@/components/sort-options/sort-options.tsx';
-import {GetOfferComparer} from "@/utils/utils.ts";
-import MainScreenEmpty from "@/pages/main-screen/main-screen-empty.tsx";
+import {GetOfferComparer} from '@/utils/utils.ts';
+import MainScreenEmpty from '@/pages/main-screen/main-screen-empty.tsx';
 
 export default function MainScreen(): JSX.Element {
   const city = useAppSelector((state) => state.city);
@@ -36,9 +36,9 @@ export default function MainScreen(): JSX.Element {
               <SortOptions/>
               <div className="cities__places-list places__list tabs__content">
                 <OfferList offers={offers.toSorted(GetOfferComparer(sortOption))}
-                           selectedOffer={selectedOffer}
-                           setSelectedOffer={setSelectedOffer}
-                           page={'cities'} width={260} height={200}
+                  selectedOffer={selectedOffer}
+                  setSelectedOffer={setSelectedOffer}
+                  page={'cities'} width={260} height={200}
                 />
               </div>
             </section>

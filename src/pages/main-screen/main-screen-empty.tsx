@@ -1,10 +1,10 @@
-import Header from "@/components/header/header.tsx";
-import CityList from "@/components/city-list/city-list.tsx";
-import {cities} from "@/mocks/cities.ts";
-import {useAppSelector} from "@/components/hooks/use-app-selector.tsx";
+import Header from '@/components/header/header.tsx';
+import CityList from '@/components/city-list/city-list.tsx';
+import {cities} from '@/mocks/cities.ts';
+import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 
 export default function MainScreenEmpty() {
-  const city = useAppSelector(state => state.city);
+  const city = useAppSelector((state) => state.city);
   return (
     <div className="page page--gray page--main">
       <Header/>
