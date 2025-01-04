@@ -7,6 +7,7 @@ import useMap from '@/components/hooks/use-map.tsx';
 import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 
 interface MapProps {
+  selectedOffer: Offer | undefined;
   offers: Offer[];
 }
 
@@ -22,8 +23,7 @@ const selectedOfferIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-export default function Map({offers}: MapProps): JSX.Element {
-  const selectedOffer = useAppSelector((state) => state.selectedOffer);
+export default function Map({selectedOffer, offers}: MapProps): JSX.Element {
   const selectedCity = useAppSelector((state) => state.city);
 
   const mapRef = useRef(null);
@@ -39,7 +39,7 @@ export default function Map({offers}: MapProps): JSX.Element {
         });
         marker
           .setIcon(
-            selectedOffer !== undefined && offer.id === selectedOffer.id
+            offer.id === selectedOffer?.id
               ? selectedOfferIcon
               : defaultOfferIcon
           )

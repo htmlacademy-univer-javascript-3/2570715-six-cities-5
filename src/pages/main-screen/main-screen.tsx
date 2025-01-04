@@ -11,6 +11,7 @@ import MainScreenEmpty from '@/pages/main-screen/main-screen-empty.tsx';
 export default function MainScreen(): JSX.Element {
   const city = useAppSelector((state) => state.city);
   const sortOption = useAppSelector((state) => state.sortOption);
+  const selectedOffer = useAppSelector((state) => state.selectedOffer);
   const offers = useAppSelector((state) => state.offers);
 
   if (offers.length === 0) {
@@ -42,7 +43,7 @@ export default function MainScreen(): JSX.Element {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map offers={offers}/>
+                <Map offers={offers} selectedOffer={selectedOffer}/>
               </section>
             </div>
           </div>
