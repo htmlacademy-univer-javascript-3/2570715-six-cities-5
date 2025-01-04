@@ -1,8 +1,6 @@
-﻿import {Offer} from '@/api/types.ts';
-import Header from '@/components/header/header.tsx';
+﻿import Header from '@/components/header/header.tsx';
 import OfferList from '@/components/offer-list/offer-list.tsx';
 import Map from '@/components/map/map.tsx';
-import {useState} from 'react';
 import CityList from '@/components/city-list/city-list.tsx';
 import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 import {cities} from '@/mocks/cities.ts';
@@ -14,7 +12,6 @@ export default function MainScreen(): JSX.Element {
   const city = useAppSelector((state) => state.city);
   const sortOption = useAppSelector((state) => state.sortOption);
   const offers = useAppSelector((state) => state.offers);
-  const [selectedOffer, setSelectedOffer] = useState<Offer | undefined>(undefined);
 
   if (offers.length === 0) {
     return <MainScreenEmpty/>;
@@ -35,16 +32,17 @@ export default function MainScreen(): JSX.Element {
               <b className="places__found">{offers.length} places to stay in {city.name}</b>
               <SortOptions/>
               <div className="cities__places-list places__list tabs__content">
-                <OfferList offers={offers.toSorted(GetOfferComparer(sortOption))}
-                  selectedOffer={selectedOffer}
-                  setSelectedOffer={setSelectedOffer}
-                  page={'cities'} width={260} height={200}
+                <OfferList
+                  offers={offers.toSorted(GetOfferComparer(sortOption))}
+                  page={'cities'}
+                  width={260}
+                  height={200}
                 />
               </div>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map city={city} offers={offers} selectedOffer={selectedOffer}/>
+                <Map offers={offers}/>
               </section>
             </div>
           </div>
