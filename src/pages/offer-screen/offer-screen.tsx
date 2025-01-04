@@ -150,7 +150,7 @@ export default function OfferScreen(): JSX.Element {
             </div>
           </div>
           <section className="offer__map map">
-            <Map offers={otherOffers}/>
+            <Map offers={offers} selectedOffer={foundOffer}/>
           </section>
         </section>
         <div className="container">
