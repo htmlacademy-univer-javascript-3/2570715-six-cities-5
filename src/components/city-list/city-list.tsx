@@ -1,8 +1,7 @@
 import {City} from '@/api/types.ts';
 import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 import {useAppDispatch} from '@/components/hooks/use-app-dispatch.tsx';
-import {setCity, setOffers} from '@/store/actions.ts';
-import {offers} from '@/mocks/offers.ts';
+import {setCity} from '@/store/action.ts';
 
 export interface CityListProps {
   cities: City[];
@@ -14,7 +13,6 @@ export default function CityList({cities}: CityListProps) {
 
   const handleCityChoose = (city: City) => {
     dispatch(setCity({city: city}));
-    dispatch(setOffers({offers: offers.filter((offer) => offer.city.name === city.name)}));
   };
 
   return (

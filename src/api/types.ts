@@ -16,6 +16,7 @@ export type Offer = {
   bedrooms: number;
   maxAdults: number;
   city: City;
+  location: Location;
 };
 
 export type Location = {
