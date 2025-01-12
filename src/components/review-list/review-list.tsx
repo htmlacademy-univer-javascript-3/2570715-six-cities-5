@@ -1,5 +1,6 @@
 ﻿import Review from '@/components/review/review.tsx';
 import {Comment} from '@/types/api.ts';
+import {compareComments} from "@/utils/utils.ts";
 
 interface ReviewListProps {
   comments: Comment[];
@@ -12,10 +13,13 @@ export default function ReviewList({comments}: ReviewListProps) {
         Reviews · <span className="reviews__amount">{comments.length}</span>
       </h2>
       <ul className="reviews__list">
-        {comments.map((comment) => (
-          <li className="reviews__item" key={comment.id}>
-            <Review comment={comment}/>
-          </li>))}
+        {comments
+          .slice(0, 10)
+          .sort(compareComments)
+          .map((comment) => (
+            <li className="reviews__item" key={comment.id}>
+              <Review comment={comment}/>
+            </li>))}
       </ul>
       <form className="reviews__form form" action="#" method="post">
         <label className="reviews__label form__label" htmlFor="review">

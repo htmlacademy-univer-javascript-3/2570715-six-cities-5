@@ -1,9 +1,11 @@
 type OfferType = string;
 type Image = string;
 type Url = string;
+type Guid = string;
+type Good = string;
 
 export type Offer = {
-  id: string;
+  id: Guid;
   type: OfferType;
   isFavorite: boolean;
   isPremium: boolean;
@@ -18,6 +20,7 @@ export type Offer = {
   location: Location;
   images: Image[];
   host: User;
+  goods: Good[];
 };
 
 export type Location = {
@@ -32,7 +35,7 @@ export type City = {
 };
 
 export type Comment = {
-  id: string;
+  id: Guid;
   date: string;
   user: User;
   comment: string;

@@ -1,5 +1,5 @@
 ﻿import {SortOption} from '@/types/sort-option.ts';
-import {Offer} from '@/types/api.ts';
+import {Comment, Offer} from '@/types/api.ts';
 
 export function groupBy<TSource, TValue>(
   source: TSource[],
@@ -53,4 +53,14 @@ export function getOfferCompare(sortOption: SortOption) {
     case SortOption.TopRatedFirst:
       return (a: Offer, b: Offer) => b.rating - a.rating;
   }
+}
+
+export function compareComments(a: Comment, b: Comment) {
+  return Date.parse(b.date) - Date.parse(a.date);
+}
+
+export function formatDate(date: Date): string {
+  const month = date.toLocaleString('default', {month: 'long'});
+  const year = date.getFullYear();
+  return `${month} ${year}`;
 }

@@ -13,7 +13,7 @@ export default function NearbyOfferList({nearbyOffers}: NearbyOfferListProps) {
           Other places in the neighbourhood
         </h2>
         <div className="near-places__list places__list">
-          <OfferList offers={nearbyOffers} page={'near-places'}/>
+          <OfferList offers={nearbyOffers.slice(0, 3)} page={'near-places'}/>
         </div>
       </section>
     </div>);

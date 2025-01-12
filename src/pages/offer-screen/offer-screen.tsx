@@ -26,7 +26,7 @@ export default function OfferScreen(): JSX.Element {
   const offerNotFound = useAppSelector((state) => state.offerNotFound);
 
   const foundOffer = useAppSelector((state) => state.offer);
-  const nearbyOffers = useAppSelector((state) => state.nearbyOffers).slice(0, 3);
+  const nearbyOffers = useAppSelector((state) => state.nearbyOffers);
   const comments = useAppSelector((state) => state.comments);
 
   if (offerNotFound) {
@@ -36,12 +36,12 @@ export default function OfferScreen(): JSX.Element {
   return (
     <div className="page">
       <Header/>
-      {isLoading ? <Spinner/> :
+      {isLoading || !foundOffer ? <Spinner/> :
         <main className="page__main page__main--offer">
           <section className="offer">
             <div className="offer__gallery-container container">
               <div className="offer__gallery">
-                {foundOffer.images.map((image) => <OfferImage key={image} src={image}/>)}
+                {foundOffer.images.slice(0, 6).map((image) => <OfferImage key={foundOffer.id + image} src={image}/>)}
               </div>
             </div>
             <div className="offer__container container">
@@ -67,7 +67,7 @@ export default function OfferScreen(): JSX.Element {
                 </div>
                 <div className="offer__rating rating">
                   <div className="offer__stars rating__stars">
-                    <span style={{width: `${foundOffer.rating * 100 / 5}%`}}/>
+                    <span style={{width: `${Math.round(foundOffer.rating) * 100 / 5}%`}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
                   <span className="offer__rating-value rating__value">{foundOffer.rating}</span>
@@ -77,10 +77,10 @@ export default function OfferScreen(): JSX.Element {
                     {capitalize(foundOffer.type)}
                   </li>
                   <li className="offer__feature offer__feature--bedrooms">
-                    {foundOffer.bedrooms} Bedrooms
+                    {foundOffer.bedrooms} {`Bedroom${foundOffer.bedrooms > 1 ? 's' : ''}`}
                   </li>
                   <li className="offer__feature offer__feature--adults">
-                    Max {foundOffer.maxAdults} adults
+                    Max {foundOffer.maxAdults} {`adult${foundOffer.maxAdults > 1 ? 's' : ''}`}
                   </li>
                 </ul>
                 <div className="offer__price">
@@ -90,22 +90,16 @@ export default function OfferScreen(): JSX.Element {
                 <div className="offer__inside">
                   <h2 className="offer__inside-title">Whats inside</h2>
                   <ul className="offer__inside-list">
-                    <li className="offer__inside-item">Wi-Fi</li>
-                    <li className="offer__inside-item">Washing machine</li>
-                    <li className="offer__inside-item">Towels</li>
-                    <li className="offer__inside-item">Heating</li>
-                    <li className="offer__inside-item">Coffee machine</li>
-                    <li className="offer__inside-item">Baby seat</li>
-                    <li className="offer__inside-item">Kitchen</li>
-                    <li className="offer__inside-item">Dishwasher</li>
-                    <li className="offer__inside-item">Cabel TV</li>
-                    <li className="offer__inside-item">Fridge</li>
+                    {foundOffer.goods.map((good) =>
+                      <li className={'offer__inside-item'} key={foundOffer.id + good}>{good}</li>)}
                   </ul>
                 </div>
                 <div className="offer__host">
                   <h2 className="offer__host-title">Meet the host</h2>
                   <div className="offer__host-user user">
-                    <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
+                    <div
+                      className={`offer__avatar-wrapper user__avatar-wrapper ${(foundOffer.host.isPro && 'offer__avatar-wrapper--pro')}`}
+                    >
                       <img
                         className="offer__avatar user__avatar"
                         src={foundOffer.host.avatarUrl}
@@ -128,7 +122,7 @@ export default function OfferScreen(): JSX.Element {
             </div>
             <section className="offer__map map">
               <Map location={foundOffer.city.location} offers={nearbyOffers.concat(foundOffer)}
-                selectedOffer={foundOffer}
+                   selectedOffer={foundOffer}
               />
             </section>
           </section>
