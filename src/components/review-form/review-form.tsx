@@ -63,8 +63,6 @@ function ReviewForm() {
       .finally(() => setIsSubmitting(false));
   };
 
-  console.log(commentInfo);
-
   return (
     <form className="reviews__form form" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
