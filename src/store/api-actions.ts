@@ -6,7 +6,7 @@ import {
   requireAuthorization,
   loadOffers,
   setIsLoading,
-  loadOffer, setOfferNotFoundStatus, setEmail, setAvatarUrl, addComment, showErrorPostingComment
+  loadOffer, setOfferNotFoundStatus, setEmail, setAvatarUrl, addComment
 } from '@/store/action.ts';
 import {AppDispatch, AppState} from '@/types/state.ts';
 import {Comment, Offer, User} from '@/types/api.ts';
@@ -106,11 +106,7 @@ export const postCommentAction = createAsyncThunk<void, CommentInfo, {
 }>(
   'comment/postComment',
   async ({comment, rating, offerId}, {dispatch, extra: api}) => {
-    try {
-      const {data} = await api.post<Comment>(`${APIRoute.Comments}/${offerId}`, {comment, rating});
-      dispatch(addComment(data));
-    } catch {
-      dispatch(showErrorPostingComment('Failed to post comment'))
-    }
+    const {data} = await api.post<Comment>(`${APIRoute.Comments}/${offerId}`, {comment, rating});
+    dispatch(addComment(data));
   },
 );

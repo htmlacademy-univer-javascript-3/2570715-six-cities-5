@@ -1,7 +1,6 @@
 import {useParams} from 'react-router-dom';
 import NotFoundScreen from '@/pages/not-found-screen/not-found-screen.tsx';
 import Header from '@/components/header/header.tsx';
-import ReviewList from '@/components/review-list/review-list.tsx';
 import Map from '@/components/map/map.tsx';
 import NearbyOfferList from '@/components/nearby-offer-list/nearby-offer-list.tsx';
 import {useEffect} from 'react';
@@ -11,6 +10,7 @@ import OfferImage from '@/components/offer-image/offer-image.tsx';
 import {capitalize} from '@/utils/utils.ts';
 import {useAppDispatch} from '@/hooks/use-app-dispatch.tsx';
 import {useAppSelector} from '@/hooks/use-app-selector.tsx';
+import ReviewSection from '@/components/review-section/review-section.tsx';
 
 export default function OfferScreen(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -117,7 +117,7 @@ export default function OfferScreen(): JSX.Element {
                     </p>
                   </div>
                 </div>
-                <ReviewList comments={comments}/>
+                <ReviewSection comments={comments}/>
               </div>
             </div>
             <section className="offer__map map">

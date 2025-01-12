@@ -5,7 +5,7 @@ import {
   loadOffers,
   setSelectedOffer,
   setSortOption,
-  setIsLoading, loadOffer, setOfferNotFoundStatus, setEmail, setAvatarUrl, addComment, showErrorPostingComment
+  setIsLoading, loadOffer, setOfferNotFoundStatus, setEmail, setAvatarUrl, addComment
 } from '@/store/action.ts';
 import {cities} from '@/constants/cities.ts';
 import {AppState} from '@/types/state.ts';
@@ -65,8 +65,5 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(addComment, (state, action) => {
       state.comments.push(action.payload);
-    })
-    .addCase(showErrorPostingComment, (state, action) => {
-      state.errorPostingComment = action.payload;
     });
 });

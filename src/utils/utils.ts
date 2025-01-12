@@ -1,5 +1,6 @@
 ﻿import {SortOption} from '@/types/sort-option.ts';
 import {Comment, Offer} from '@/types/api.ts';
+import {CommentInfo} from '@/types/comment-info.ts';
 
 export function groupBy<TSource, TValue>(
   source: TSource[],
@@ -63,4 +64,8 @@ export function formatDate(date: Date): string {
   const month = date.toLocaleString('default', {month: 'long'});
   const year = date.getFullYear();
   return `${month} ${year}`;
+}
+
+export function validateCommentInfo(comment: CommentInfo): boolean {
+  return comment.comment.length >= 50 && comment.comment.length <= 300 && comment.rating > 0;
 }
