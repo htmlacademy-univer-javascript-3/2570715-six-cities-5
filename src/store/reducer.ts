@@ -14,8 +14,8 @@ import {AuthorizationStatus} from '@/constants/auth-status.ts';
 
 const initialState: AppState = {
   authorizationStatus: AuthorizationStatus.Unknown,
-  city: cities[5],
-  offers: undefined,
+  city: cities[0],
+  offers: [],
   sortOption: SortOption.Default,
   selectedOffer: undefined,
   isOffersDataLoading: false,

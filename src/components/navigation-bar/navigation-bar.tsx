@@ -1,5 +1,7 @@
 ﻿import {Link} from 'react-router-dom';
 import {AppRoute} from '@/constants/app-routes.ts';
+import {useAppDispatch} from '@/components/hooks/use-app-dispatch.tsx';
+import {logoutAction} from '@/store/api-actions.ts';
 
 interface NavigationBarProps {
   email: string;
@@ -7,6 +9,11 @@ interface NavigationBarProps {
 }
 
 export default function NavigationBar({email, favoriteOffersCount}: NavigationBarProps) {
+  const dispatch = useAppDispatch();
+  const handleSignOut = () => {
+    dispatch(logoutAction());
+  };
+
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
@@ -19,7 +26,10 @@ export default function NavigationBar({email, favoriteOffersCount}: NavigationBa
           </Link>
         </li>
         <li className="header__nav-item">
-          <a className="header__nav-link">
+          <a
+            className="header__nav-link"
+            onClick={handleSignOut}
+          >
             <span className="header__signout">Sign out</span>
           </a>
         </li>
