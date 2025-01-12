@@ -81,7 +81,7 @@ function ReviewForm() {
         <p className="reviews__help">
           To submit a review, please make sure to set a <span className="reviews__star">rating</span> and describe your
           stay with a text between
-          <b className="reviews__text-amount">50 and 300
+          <b className="reviews__text-amount"> 50 and 300
             characters.
           </b> ({commentInfo.comment.length}/300)
         </p>
