@@ -1,7 +1,7 @@
 import OfferList from '@/components/offer-list/offer-list.tsx';
 import {Offer} from '@/types/api.ts';
 import {MAX_NEARBY_OFFERS_COUNT} from '@/constants/settings.ts';
-import {memo} from "react";
+import {memo} from 'react';
 
 interface NearbyOfferListProps {
   nearbyOffers: Offer[];

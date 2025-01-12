@@ -2,7 +2,7 @@
 import {Comment} from '@/types/api.ts';
 import {compareComments} from '@/utils/utils.ts';
 import {MAX_REVIEWS_COUNT} from '@/constants/settings.ts';
-import {memo} from "react";
+import {memo} from 'react';
 
 interface ReviewListProps {
   comments: Comment[];

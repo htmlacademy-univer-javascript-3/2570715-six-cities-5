@@ -3,7 +3,7 @@ import NavigationBar from '@/components/navigation-bar/navigation-bar.tsx';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
 import NavigationBarNotLogged from '@/components/navigation-bar-not-logged/navigation-bar-not-logged.tsx';
 import {useAppSelector} from '@/hooks/use-app-selector.tsx';
-import {memo} from "react";
+import {memo} from 'react';
 
 function Header() {
   const avatarUrl = useAppSelector((state) => state.avatarUrl);

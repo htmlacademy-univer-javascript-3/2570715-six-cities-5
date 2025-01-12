@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {AppRoute} from '@/constants/app-routes.ts';
-import {memo} from "react";
+import {memo} from 'react';
 
 function NavigationBarNotLogged() {
   return (

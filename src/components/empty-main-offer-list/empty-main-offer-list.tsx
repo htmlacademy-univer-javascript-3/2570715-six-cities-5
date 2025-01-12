@@ -1,5 +1,5 @@
 import {City} from '@/types/api.ts';
-import {memo} from "react";
+import {memo} from 'react';
 
 interface EmptyMainOfferListProps {
   city: City;

@@ -3,7 +3,7 @@ import {AppRoute} from '@/constants/app-routes.ts';
 import {logoutAction} from '@/store/api-actions.ts';
 import {Email, Url} from '@/types/api.ts';
 import {useAppDispatch} from '@/hooks/use-app-dispatch.tsx';
-import {memo} from "react";
+import {memo} from 'react';
 
 interface NavigationBarProps {
   avatarUrl: Url;

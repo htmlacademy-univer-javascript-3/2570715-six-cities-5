@@ -1,6 +1,6 @@
 ﻿import {Comment} from '@/types/api.ts';
 import {formatDate} from '@/utils/utils.ts';
-import {memo} from "react";
+import {memo} from 'react';
 
 interface ReviewProps {
   comment: Comment;

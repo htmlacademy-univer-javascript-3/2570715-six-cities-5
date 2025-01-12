@@ -1,6 +1,6 @@
 import GroupedFavoriteOffers from '@/components/grouped-favorite-offers/grouped-favorite-offers.tsx';
 import {Offer} from '@/types/api.ts';
-import {memo} from "react";
+import {memo} from 'react';
 
 interface FavoriteOfferListProps {
   offers: Offer[];
