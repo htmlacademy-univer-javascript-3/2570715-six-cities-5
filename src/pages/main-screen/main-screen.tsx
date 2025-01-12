@@ -11,12 +11,12 @@ export default function MainScreen(): JSX.Element {
   const sortOption = useAppSelector((state) => state.sortOption);
   const selectedOffer = useAppSelector((state) => state.selectedOffer);
   const offers = useAppSelector((state) => state.offers);
-  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
+  const isLoading = useAppSelector((state) => state.isLoading);
 
   return (
     <div className="page page--gray page--main">
       <Header/>
-      {isOffersDataLoading ? <Spinner/> :
+      {isLoading ? <Spinner/> :
         <main className={`page__main page__main--index ${offers.length === 0 && 'page__main--index-empty'}`}>
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">

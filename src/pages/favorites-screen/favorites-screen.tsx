@@ -6,19 +6,19 @@ import FavoriteOfferList from '@/components/favorite-offer-list/favorite-offer-l
 import Spinner from '@/components/spinner/spinner.tsx';
 
 export default function FavoritesScreen(): JSX.Element {
-  const offers = useAppSelector((state) => state.offers);
-  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
-  const isOfferListEmpty = !isOffersDataLoading && offers.length === 0;
+  const favoriteOffers = useAppSelector((state) => state.offers).filter((offer) => offer.isFavorite);
+  const isLoading = useAppSelector((state) => state.isLoading);
+  const offerListEmpty = !isLoading && favoriteOffers.length === 0;
 
   return (
-    <div className={`page ${isOfferListEmpty && 'page--favorites-empty'}`}>
+    <div className={`page ${offerListEmpty && 'page--favorites-empty'}`}>
       <Header/>
-      {isOffersDataLoading ? <Spinner/> :
-        <main className={`page__main page__main--favorites ${isOfferListEmpty && 'page__main--favorites-empty'}`}>
+      {isLoading ? <Spinner/> :
+        <main className={`page__main page__main--favorites ${offerListEmpty && 'page__main--favorites-empty'}`}>
           <div className="page__favorites-container container">
-            {isOfferListEmpty
+            {offerListEmpty
               ? <EmptyFavoriteOfferList/>
-              : <FavoriteOfferList offers={offers}/>}
+              : <FavoriteOfferList offers={favoriteOffers}/>}
           </div>
         </main>}
       <Footer/>

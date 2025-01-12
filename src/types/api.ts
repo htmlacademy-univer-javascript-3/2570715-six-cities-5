@@ -1,4 +1,6 @@
 type OfferType = string;
+type Image = string;
+type Url = string;
 
 export type Offer = {
   id: string;
@@ -8,12 +10,14 @@ export type Offer = {
   price: number;
   rating: number;
   title: string;
-  previewImage: string;
+  previewImage: Image;
   description: string;
   bedrooms: number;
   maxAdults: number;
   city: City;
   location: Location;
+  images: Image[];
+  host: User;
 };
 
 export type Location = {
@@ -37,6 +41,6 @@ export type Comment = {
 
 export type User = {
   name: string;
-  avatarUrl: string;
+  avatarUrl: Url;
   isPro: boolean;
 }

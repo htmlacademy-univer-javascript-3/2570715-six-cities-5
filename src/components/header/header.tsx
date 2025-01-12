@@ -7,13 +7,14 @@ import NavigationBarNotLogged from '@/components/navigation-bar-not-logged/navig
 export default function Header() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const authorized = authorizationStatus === AuthorizationStatus.Auth;
+  const favoriteOffersCount = useAppSelector((state) => state.offers).filter((offer) => offer.isFavorite).length;
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <Logo/>
           {authorized
-            ? <NavigationBar email={'imposter@gmail.com'} favoriteOffersCount={42}/>
+            ? <NavigationBar email={'imposter@gmail.com'} favoriteOffersCount={favoriteOffersCount}/>
             : <NavigationBarNotLogged/>}
         </div>
       </div>

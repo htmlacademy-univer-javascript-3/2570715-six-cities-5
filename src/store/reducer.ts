@@ -5,12 +5,13 @@ import {
   loadOffers,
   setSelectedOffer,
   setSortOption,
-  setOffersDataLoadingStatus
+  setIsLoading, loadOffer, setOfferNotFoundStatus
 } from '@/store/action.ts';
 import {cities} from '@/constants/cities.ts';
 import {AppState} from '@/types/state.ts';
 import {SortOption} from '@/types/sort-option.ts';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
+import {Offer} from '@/types/api.ts';
 
 const initialState: AppState = {
   authorizationStatus: AuthorizationStatus.Unknown,
@@ -18,7 +19,11 @@ const initialState: AppState = {
   offers: [],
   sortOption: SortOption.Default,
   selectedOffer: undefined,
-  isOffersDataLoading: false,
+  isLoading: false,
+  offerNotFound: false,
+  offer: undefined as unknown as Offer,
+  nearbyOffers: [],
+  comments: []
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -35,10 +40,18 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(setSelectedOffer, (state, action) => {
       state.selectedOffer = action.payload.selectedOffer;
     })
-    .addCase(setOffersDataLoadingStatus, (state, action) => {
-      state.isOffersDataLoading = action.payload;
+    .addCase(setIsLoading, (state, action) => {
+      state.isLoading = action.payload;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
+    })
+    .addCase(loadOffer, (state, action) => {
+      state.offer = action.payload.offer;
+      state.nearbyOffers = action.payload.nearbyOffers;
+      state.comments = action.payload.comments;
+    })
+    .addCase(setOfferNotFoundStatus, (state, action) => {
+      state.offerNotFound = action.payload;
     });
 });
