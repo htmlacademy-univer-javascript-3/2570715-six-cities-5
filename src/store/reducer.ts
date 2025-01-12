@@ -5,7 +5,7 @@ import {
   loadOffers,
   setSelectedOffer,
   setSortOption,
-  setIsLoading, loadOffer, setOfferNotFoundStatus, setEmail, setAvatarUrl
+  setIsLoading, loadOffer, setOfferNotFoundStatus, setEmail, setAvatarUrl, addComment, showErrorPostingComment
 } from '@/store/action.ts';
 import {cities} from '@/constants/cities.ts';
 import {AppState} from '@/types/state.ts';
@@ -26,6 +26,7 @@ const initialState: AppState = {
   comments: [],
   email: undefined,
   avatarUrl: undefined,
+  errorPostingComment: undefined,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -61,5 +62,11 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setAvatarUrl, (state, action) => {
       state.avatarUrl = action.payload;
+    })
+    .addCase(addComment, (state, action) => {
+      state.comments.push(action.payload);
+    })
+    .addCase(showErrorPostingComment, (state, action) => {
+      state.errorPostingComment = action.payload;
     });
 });

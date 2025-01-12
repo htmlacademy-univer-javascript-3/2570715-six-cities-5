@@ -16,5 +16,6 @@ export type AppState = {
   comments: Comment[];
   email: Email | undefined;
   avatarUrl: Url | undefined;
+  errorPostingComment: string | undefined;
 };
 export type AppDispatch = typeof store.dispatch;

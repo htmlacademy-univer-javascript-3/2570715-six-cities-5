@@ -16,3 +16,6 @@ export const redirectToRoute = createAction<AppRoute>('user/redirectToRoute');
 
 export const setEmail = createAction<string>('user/setEmail');
 export const setAvatarUrl = createAction<string>('user/setAvatarUrl');
+
+export const addComment = createAction<Comment>('comment/addComment');
+export const showErrorPostingComment = createAction<string>('comment/showErrorPostingComment');

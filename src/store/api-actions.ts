@@ -6,7 +6,7 @@ import {
   requireAuthorization,
   loadOffers,
   setIsLoading,
-  loadOffer, setOfferNotFoundStatus, setEmail, setAvatarUrl
+  loadOffer, setOfferNotFoundStatus, setEmail, setAvatarUrl, addComment, showErrorPostingComment
 } from '@/store/action.ts';
 import {AppDispatch, AppState} from '@/types/state.ts';
 import {Comment, Offer, User} from '@/types/api.ts';
@@ -14,6 +14,7 @@ import {dropToken, saveToken} from '@/api/token.ts';
 import {AuthData} from '@/types/auth-data.ts';
 import {AppRoute} from '@/constants/app-routes.ts';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
+import {CommentInfo} from '@/types/comment-info.ts';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -37,6 +38,7 @@ export const fetchOfferAction = createAsyncThunk<void, { offerId: string }, {
   'offer/fetchOffer',
   async ({offerId}, {dispatch, extra: api}) => {
     try {
+      dispatch(setOfferNotFoundStatus(false));
       dispatch(setIsLoading(true));
       const {data: offer} = await api.get<Offer>(`${APIRoute.Offers}/${offerId}`);
       const {data: nearbyOffers} = await api.get<Offer[]>(`${APIRoute.Offers}/${offerId}/nearby`);
@@ -94,5 +96,21 @@ export const logoutAction = createAsyncThunk<void, undefined, {
     await api.delete(APIRoute.Logout);
     dropToken();
     dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+  },
+);
+
+export const postCommentAction = createAsyncThunk<void, CommentInfo, {
+  dispatch: AppDispatch;
+  state: AppState;
+  extra: AxiosInstance;
+}>(
+  'comment/postComment',
+  async ({comment, rating, offerId}, {dispatch, extra: api}) => {
+    try {
+      const {data} = await api.post<Comment>(`${APIRoute.Comments}/${offerId}`, {comment, rating});
+      dispatch(addComment(data));
+    } catch {
+      dispatch(showErrorPostingComment('Failed to post comment'))
+    }
   },
 );
