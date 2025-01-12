@@ -22,7 +22,7 @@ export function groupBy<TSource, TValue>(
   return groupedResults;
 }
 
-export function GetOfferComparer(sortOption: SortOption) {
+export function getOfferCompare(sortOption: SortOption) {
   switch (sortOption) {
     case SortOption.Default:
       return undefined;
