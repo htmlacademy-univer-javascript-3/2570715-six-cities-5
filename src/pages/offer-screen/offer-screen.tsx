@@ -2,7 +2,6 @@ import {useParams} from 'react-router-dom';
 import NotFoundScreen from '@/pages/not-found-screen/not-found-screen.tsx';
 import Header from '@/components/header/header.tsx';
 import ReviewList from '@/components/review-list/review-list.tsx';
-import {comments} from '@/mocks/comments.ts';
 import Map from '@/components/map/map.tsx';
 import NearbyOfferList from '@/components/nearby-offer-list/nearby-offer-list.tsx';
 import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
@@ -147,7 +146,7 @@ export default function OfferScreen(): JSX.Element {
                   </p>
                 </div>
               </div>
-              <ReviewList comments={comments}/>
+              <ReviewList comments={[]}/>
             </div>
           </div>
           <section className="offer__map map">

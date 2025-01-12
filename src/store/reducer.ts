@@ -2,7 +2,7 @@ import {createReducer} from '@reduxjs/toolkit';
 import {setCity, setOffers, setSelectedOffer, setSortOption} from '@/store/action.ts';
 import {SortOption} from '@/constants/sort-option.ts';
 import {AppState} from '@/state/types.ts';
-import {cities} from '@/mocks/cities.ts';
+import {cities} from '@/constants/cities.ts';
 
 const initialState: AppState = {
   city: cities[5],
