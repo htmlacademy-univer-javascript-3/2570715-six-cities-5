@@ -1,8 +1,8 @@
 ﻿import {Link} from 'react-router-dom';
 import {AppRoute} from '@/constants/app-routes.ts';
-import {useAppDispatch} from '@/components/hooks/use-app-dispatch.tsx';
 import {logoutAction} from '@/store/api-actions.ts';
 import {Email, Url} from '@/types/api.ts';
+import {useAppDispatch} from '@/hooks/use-app-dispatch.tsx';
 
 interface NavigationBarProps {
   avatarUrl: Url;

@@ -1,8 +1,8 @@
 ﻿import Logo from '@/components/logo/logo.tsx';
 import NavigationBar from '@/components/navigation-bar/navigation-bar.tsx';
-import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
 import NavigationBarNotLogged from '@/components/navigation-bar-not-logged/navigation-bar-not-logged.tsx';
+import {useAppSelector} from '@/hooks/use-app-selector.tsx';
 
 export default function Header() {
   const avatarUrl = useAppSelector((state) => state.avatarUrl);

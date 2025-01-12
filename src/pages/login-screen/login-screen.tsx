@@ -1,12 +1,12 @@
 import Header from '@/components/header/header.tsx';
-import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
 import {Link, Navigate} from 'react-router-dom';
 import {AppRoute} from '@/constants/app-routes.ts';
 import {FormEvent, useRef, useState} from 'react';
-import {useAppDispatch} from '@/components/hooks/use-app-dispatch.tsx';
 import {loginAction} from '@/store/api-actions.ts';
 import {validatePassword} from '@/utils/utils.ts';
+import {useAppSelector} from '@/hooks/use-app-selector.tsx';
+import {useAppDispatch} from '@/hooks/use-app-dispatch.tsx';
 
 export default function LoginScreen(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);

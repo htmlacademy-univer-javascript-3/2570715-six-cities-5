@@ -1,9 +1,9 @@
 import Footer from '@/components/footer/footer.tsx';
 import Header from '@/components/header/header.tsx';
-import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 import EmptyFavoriteOfferList from '@/components/empty-favorite-offer-list/empty-favorite-offer-list.tsx';
 import FavoriteOfferList from '@/components/favorite-offer-list/favorite-offer-list.tsx';
 import Spinner from '@/components/spinner/spinner.tsx';
+import {useAppSelector} from '@/hooks/use-app-selector.tsx';
 
 export default function FavoritesScreen(): JSX.Element {
   const favoriteOffers = useAppSelector((state) => state.offers).filter((offer) => offer.isFavorite);

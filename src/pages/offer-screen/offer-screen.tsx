@@ -4,13 +4,13 @@ import Header from '@/components/header/header.tsx';
 import ReviewList from '@/components/review-list/review-list.tsx';
 import Map from '@/components/map/map.tsx';
 import NearbyOfferList from '@/components/nearby-offer-list/nearby-offer-list.tsx';
-import {useAppDispatch} from '@/components/hooks/use-app-dispatch.tsx';
-import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 import {useEffect} from 'react';
 import {fetchOfferAction} from '@/store/api-actions.ts';
 import Spinner from '@/components/spinner/spinner.tsx';
 import OfferImage from '@/components/offer-image/offer-image.tsx';
 import {capitalize} from '@/utils/utils.ts';
+import {useAppDispatch} from '@/hooks/use-app-dispatch.tsx';
+import {useAppSelector} from '@/hooks/use-app-selector.tsx';
 
 export default function OfferScreen(): JSX.Element {
   const dispatch = useAppDispatch();
