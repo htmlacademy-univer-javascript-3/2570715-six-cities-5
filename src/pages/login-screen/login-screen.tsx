@@ -20,9 +20,9 @@ export default function LoginScreen(): JSX.Element {
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    setValidationError(validatePassword(passwordRef.current!.value));
-    setValidationError((error) => {
-      if (loginRef.current !== null && passwordRef.current !== null && error === undefined) {
+    setValidationError(() => {
+      const error = validatePassword(passwordRef.current!.value);
+      if (error === undefined && loginRef.current !== null && passwordRef.current !== null) {
         dispatch(loginAction({
           login: loginRef.current.value,
           password: passwordRef.current.value

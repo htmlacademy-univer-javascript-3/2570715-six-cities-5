@@ -25,8 +25,8 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   async (_arg, {dispatch, extra: api}) => {
     dispatch(setIsLoading(true));
     const {data} = await api.get<Offer[]>(APIRoute.Offers);
-    dispatch(setIsLoading(false));
     dispatch(loadOffers({offers: data}));
+    dispatch(setIsLoading(false));
   },
 );
 
@@ -42,8 +42,8 @@ export const fetchOfferAction = createAsyncThunk<void, { offerId: string }, {
       const {data: offer} = await api.get<Offer>(`${APIRoute.Offers}/${offerId}`);
       const {data: nearbyOffers} = await api.get<Offer[]>(`${APIRoute.Offers}/${offerId}/nearby`);
       const {data: comments} = await api.get<Comment[]>(`${APIRoute.Comments}/${offerId}`);
-      dispatch(setIsLoading(false));
       dispatch(loadOffer({offer, nearbyOffers, comments}));
+      dispatch(setIsLoading(false));
     } catch {
       dispatch(setOfferNotFoundStatus(true));
       dispatch(setIsLoading(false));

@@ -36,7 +36,7 @@ export default function OfferScreen(): JSX.Element {
   return (
     <div className="page">
       <Header/>
-      {isLoading || !foundOffer ? <Spinner/> :
+      {isLoading ? <Spinner/> :
         <main className="page__main page__main--offer">
           <section className="offer">
             <div className="offer__gallery-container container">
