@@ -2,7 +2,7 @@ import ReviewList from '@/components/review-list/review-list.tsx';
 import {Comment} from '@/types/api.ts';
 import {useAppSelector} from '@/hooks/use-app-selector.tsx';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
-import ReviewForm from '@/components/review-form/review-form.tsx';
+import ReviewForm from "@/components/review-form/review-form.tsx";
 
 interface ReviewSectionProps {
   comments: Comment[];

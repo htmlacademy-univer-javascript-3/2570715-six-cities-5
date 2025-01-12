@@ -61,9 +61,10 @@ export function compareComments(a: Comment, b: Comment) {
 }
 
 export function formatDate(date: Date): string {
-  const month = date.toLocaleString('default', {month: 'long'});
-  const year = date.getFullYear();
-  return `${month} ${year}`;
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+  });
 }
 
 export function validateCommentInfo(comment: CommentInfo): boolean {
