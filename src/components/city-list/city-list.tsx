@@ -22,7 +22,6 @@ export default function CityList({cities}: CityListProps) {
           <li key={city.name}>
             <a
               className={`locations__item-link tabs__item ${city.name === currentCity.name ? 'tabs__item--active' : ''}`}
-              href="#"
               onClick={() => handleCityChoose(city)}
             >
               <span>{city.name}</span>
