@@ -1,6 +1,6 @@
 import SortOptions from '@/components/sort-options/sort-options.tsx';
 import OfferList from '@/components/offer-list/offer-list.tsx';
-import {GetOfferComparer} from '@/utils/utils.ts';
+import {getOfferCompare} from '@/utils/utils.ts';
 import Map from '@/components/map/map.tsx';
 import {City, Offer} from '@/types/api.ts';
 import {SortOption} from '@/types/sort-option.ts';
@@ -21,7 +21,7 @@ export default function MainOfferList({city, selectedOffer, offers, sortOption}:
         <b className="places__found">{cityOffers.length} places to stay in {city.name}</b>
         <SortOptions/>
         <div className="cities__places-list places__list tabs__content">
-          <OfferList offers={cityOffers.toSorted(GetOfferComparer(sortOption))} page={'cities'}/>
+          <OfferList offers={cityOffers.toSorted(getOfferCompare(sortOption))} page={'cities'}/>
         </div>
       </section>
       <div className="cities__right-section">
