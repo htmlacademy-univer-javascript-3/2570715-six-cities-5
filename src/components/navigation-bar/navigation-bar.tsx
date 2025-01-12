@@ -2,24 +2,11 @@
 import {AppRoute} from '@/constants/app-routes.ts';
 
 interface NavigationBarProps {
-  logged?: boolean;
+  email: string;
+  favoriteOffersCount: number;
 }
 
-export default function NavigationBar({logged}: NavigationBarProps) {
-  if (!logged) {
-    return (
-      <nav className="header__nav">
-        <ul className="header__nav-list">
-          <li className="header__nav-item user">
-            <Link to={AppRoute.Login} className="header__nav-link header__nav-link--profile">
-              <div className="header__avatar-wrapper user__avatar-wrapper">
-              </div>
-              <span className="header__login">Sign in</span>
-            </Link>
-          </li>
-        </ul>
-      </nav>);
-  }
+export default function NavigationBar({email, favoriteOffersCount}: NavigationBarProps) {
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
@@ -27,8 +14,8 @@ export default function NavigationBar({logged}: NavigationBarProps) {
           <Link to={AppRoute.Favorites} className="header__nav-link header__nav-link--profile">
             <div className="header__avatar-wrapper user__avatar-wrapper">
             </div>
-            <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-            <span className="header__favorite-count">0</span>
+            <span className="header__user-name user__name">{email}</span>
+            <span className="header__favorite-count">{favoriteOffersCount}</span>
           </Link>
         </li>
         <li className="header__nav-item">
