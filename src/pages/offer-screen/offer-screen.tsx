@@ -11,6 +11,7 @@ import {capitalize} from '@/utils/utils.ts';
 import {useAppDispatch} from '@/hooks/use-app-dispatch.tsx';
 import {useAppSelector} from '@/hooks/use-app-selector.tsx';
 import ReviewSection from '@/components/review-section/review-section.tsx';
+import {MAX_OFFER_IMAGES_COUNT} from '@/constants/settings.ts';
 
 export default function OfferScreen(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -41,7 +42,8 @@ export default function OfferScreen(): JSX.Element {
           <section className="offer">
             <div className="offer__gallery-container container">
               <div className="offer__gallery">
-                {foundOffer.images.slice(0, 6).map((image) => <OfferImage key={foundOffer.id + image} src={image}/>)}
+                {foundOffer.images.slice(0, MAX_OFFER_IMAGES_COUNT).map((image) =>
+                  <OfferImage key={foundOffer.id + image} src={image}/>)}
               </div>
             </div>
             <div className="offer__container container">
