@@ -1,11 +1,10 @@
-import {useState} from 'react';
+import {memo, useState} from 'react';
 import {SortOption} from '@/types/sort-option.ts';
 import {useAppDispatch} from '@/hooks/use-app-dispatch.tsx';
 import {useAppSelector} from '@/hooks/use-app-selector.tsx';
 import {setSortOption} from '@/store/action.ts';
 
-
-export default function SortOptions() {
+function SortOptions() {
   const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const currentSortOption = useAppSelector((state) => state.sortOption);
@@ -40,3 +39,6 @@ export default function SortOptions() {
     </form>
   );
 }
+
+const MemoizedSortOptions = memo(SortOptions);
+export default MemoizedSortOptions;

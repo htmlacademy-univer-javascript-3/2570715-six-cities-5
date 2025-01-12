@@ -3,8 +3,9 @@ import NavigationBar from '@/components/navigation-bar/navigation-bar.tsx';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
 import NavigationBarNotLogged from '@/components/navigation-bar-not-logged/navigation-bar-not-logged.tsx';
 import {useAppSelector} from '@/hooks/use-app-selector.tsx';
+import {memo} from "react";
 
-export default function Header() {
+function Header() {
   const avatarUrl = useAppSelector((state) => state.avatarUrl);
   const email = useAppSelector((state) => state.email);
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
@@ -22,3 +23,6 @@ export default function Header() {
       </div>
     </header>);
 }
+
+const MemoizedHeader = memo(Header);
+export default MemoizedHeader;

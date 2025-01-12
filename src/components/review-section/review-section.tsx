@@ -3,12 +3,13 @@ import {Comment} from '@/types/api.ts';
 import {useAppSelector} from '@/hooks/use-app-selector.tsx';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
 import ReviewForm from '@/components/review-form/review-form.tsx';
+import {memo} from "react";
 
 interface ReviewSectionProps {
   comments: Comment[];
 }
 
-export default function ReviewSection({comments}: ReviewSectionProps) {
+function ReviewSection({comments}: ReviewSectionProps) {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   return (
@@ -21,3 +22,6 @@ export default function ReviewSection({comments}: ReviewSectionProps) {
     </section>
   );
 }
+
+const MemoizedReviewSection = memo(ReviewSection);
+export default MemoizedReviewSection;
