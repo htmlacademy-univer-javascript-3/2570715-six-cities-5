@@ -10,7 +10,7 @@ import {
 import {cities} from '@/constants/cities.ts';
 import {AppState} from '@/types/state.ts';
 import {SortOption} from '@/types/sort-option.ts';
-import {AuthorizationStatus} from "@/constants/auth-status.ts";
+import {AuthorizationStatus} from '@/constants/auth-status.ts';
 
 const initialState: AppState = {
   authorizationStatus: AuthorizationStatus.Unknown,

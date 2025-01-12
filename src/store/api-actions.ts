@@ -4,11 +4,11 @@ import {APIRoute} from '@/constants/api-routes.ts';
 import {redirectToRoute, requireAuthorization, loadOffers, setOffersDataLoadingStatus} from '@/store/action.ts';
 import {AppDispatch, AppState} from '@/types/state.ts';
 import {Offer} from '@/types/api.ts';
-import {dropToken, saveToken} from "@/api/token.ts";
-import {AuthData} from "@/types/auth-data.ts";
-import {UserData} from "@/types/user-data.ts";
-import {AppRoute} from "@/constants/app-routes.ts";
-import {AuthorizationStatus} from "@/constants/auth-status.ts";
+import {dropToken, saveToken} from '@/api/token.ts';
+import {AuthData} from '@/types/auth-data.ts';
+import {UserData} from '@/types/user-data.ts';
+import {AppRoute} from '@/constants/app-routes.ts';
+import {AuthorizationStatus} from '@/constants/auth-status.ts';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;

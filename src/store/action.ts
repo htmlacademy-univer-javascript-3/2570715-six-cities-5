@@ -1,8 +1,8 @@
 import {createAction} from '@reduxjs/toolkit';
 import {City, Offer} from '@/types/api.ts';
 import {SortOption} from '@/types/sort-option.ts';
-import {AppRoute} from "@/constants/app-routes.ts";
-import {AuthorizationStatus} from "@/constants/auth-status.ts";
+import {AppRoute} from '@/constants/app-routes.ts';
+import {AuthorizationStatus} from '@/constants/auth-status.ts';
 
 export const loadOffers = createAction<{ offers: Offer[] }>('offers/setOffers');
 export const setCity = createAction<{ city: City }>('offers/setCity');
