@@ -26,7 +26,7 @@ export default function OfferScreen(): JSX.Element {
   const offerNotFound = useAppSelector((state) => state.offerNotFound);
 
   const foundOffer = useAppSelector((state) => state.offer);
-  const nearbyOffers = useAppSelector((state) => state.nearbyOffers);
+  const nearbyOffers = useAppSelector((state) => state.nearbyOffers).slice(0, 3);
   const comments = useAppSelector((state) => state.comments);
 
   if (offerNotFound) {
@@ -122,7 +122,7 @@ export default function OfferScreen(): JSX.Element {
             </div>
             <section className="offer__map map">
               <Map location={foundOffer.city.location} offers={nearbyOffers.concat(foundOffer)}
-                   selectedOffer={foundOffer}
+                selectedOffer={foundOffer}
               />
             </section>
           </section>

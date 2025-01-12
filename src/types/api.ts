@@ -1,8 +1,11 @@
-type OfferType = string;
-type Image = string;
-type Url = string;
-type Guid = string;
-type Good = string;
+import {Token} from '@/api/token.ts';
+
+export type OfferType = string;
+export type Image = string;
+export type Url = string;
+export type Guid = string;
+export type Good = string;
+export type Email = string;
 
 export type Offer = {
   id: Guid;
@@ -40,10 +43,12 @@ export type Comment = {
   user: User;
   comment: string;
   rating: number;
-}
+};
 
 export type User = {
   name: string;
+  email: Email;
   avatarUrl: Url;
   isPro: boolean;
-}
+  token: Token;
+};

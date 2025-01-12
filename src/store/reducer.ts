@@ -5,7 +5,7 @@ import {
   loadOffers,
   setSelectedOffer,
   setSortOption,
-  setIsLoading, loadOffer, setOfferNotFoundStatus
+  setIsLoading, loadOffer, setOfferNotFoundStatus, setEmail, setAvatarUrl
 } from '@/store/action.ts';
 import {cities} from '@/constants/cities.ts';
 import {AppState} from '@/types/state.ts';
@@ -15,7 +15,7 @@ import {Offer} from '@/types/api.ts';
 
 const initialState: AppState = {
   authorizationStatus: AuthorizationStatus.Unknown,
-  city: cities[0],
+  city: cities[5],
   offers: [],
   sortOption: SortOption.Default,
   selectedOffer: undefined,
@@ -23,7 +23,9 @@ const initialState: AppState = {
   offerNotFound: false,
   offer: undefined as unknown as Offer,
   nearbyOffers: [],
-  comments: []
+  comments: [],
+  email: undefined,
+  avatarUrl: undefined,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -53,5 +55,11 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setOfferNotFoundStatus, (state, action) => {
       state.offerNotFound = action.payload;
+    })
+    .addCase(setEmail, (state, action) => {
+      state.email = action.payload;
+    })
+    .addCase(setAvatarUrl, (state, action) => {
+      state.avatarUrl = action.payload;
     });
 });

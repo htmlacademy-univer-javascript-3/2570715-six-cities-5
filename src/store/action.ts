@@ -13,3 +13,6 @@ export const setSelectedOffer = createAction<{ selectedOffer: Offer | undefined 
 export const setIsLoading = createAction<boolean>('user/isLoading');
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 export const redirectToRoute = createAction<AppRoute>('user/redirectToRoute');
+
+export const setEmail = createAction<string>('user/setEmail');
+export const setAvatarUrl = createAction<string>('user/setAvatarUrl');

@@ -1,6 +1,6 @@
 import {store} from '@/store';
 import {SortOption} from '@/types/sort-option.ts';
-import {City, Comment, Offer} from '@/types/api.ts';
+import {City, Comment, Email, Offer, Url} from '@/types/api.ts';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
 
 export type AppState = {
@@ -14,5 +14,7 @@ export type AppState = {
   offer: Offer;
   nearbyOffers: Offer[];
   comments: Comment[];
+  email: Email | undefined;
+  avatarUrl: Url | undefined;
 };
 export type AppDispatch = typeof store.dispatch;
