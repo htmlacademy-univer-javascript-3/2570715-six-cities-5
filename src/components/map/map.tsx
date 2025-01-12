@@ -1,9 +1,9 @@
-﻿import {Location, Offer} from '@/api/types.ts';
-import 'leaflet/dist/leaflet.css';
+﻿import 'leaflet/dist/leaflet.css';
 import {Icon, layerGroup, Marker} from 'leaflet';
 import {URL_PIN_ACTIVE, URL_PIN} from '@/constants/url-markers.ts';
 import {useEffect, useRef} from 'react';
 import useMap from '@/components/hooks/use-map.tsx';
+import {Location, Offer} from '@/types/api.ts';
 
 interface MapProps {
   location: Location;

@@ -1,9 +1,9 @@
 import {AxiosInstance} from 'axios';
-import {AppDispatch, AppState} from '@/state/types.ts';
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {Offer} from '@/api/types.ts';
 import {APIRoute} from '@/constants/api-routes.ts';
 import {setOffers} from '@/store/action.ts';
+import {AppDispatch, AppState} from '@/types/state.ts';
+import {Offer} from '@/types/api.ts';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;

@@ -1,9 +1,9 @@
-import {City, Offer} from '@/api/types.ts';
 import SortOptions from '@/components/sort-options/sort-options.tsx';
 import OfferList from '@/components/offer-list/offer-list.tsx';
 import {GetOfferComparer} from '@/utils/utils.ts';
 import Map from '@/components/map/map.tsx';
-import {SortOption} from '@/constants/sort-option.ts';
+import {City, Offer} from '@/types/api.ts';
+import {SortOption} from '@/types/sort-option.ts';
 
 interface MainOfferListProps {
   city: City;

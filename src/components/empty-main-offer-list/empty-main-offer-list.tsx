@@ -1,4 +1,4 @@
-import {City} from '@/api/types.ts';
+import {City} from '@/types/api.ts';
 
 interface EmptyMainOfferListProps {
   city: City;

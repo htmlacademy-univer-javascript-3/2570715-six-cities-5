@@ -4,6 +4,7 @@ import {createAPI} from '@/api/api.ts';
 
 
 export const api = createAPI();
+
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>

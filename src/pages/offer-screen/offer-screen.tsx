@@ -9,8 +9,8 @@ import {useAppSelector} from '@/components/hooks/use-app-selector.tsx';
 export default function OfferScreen(): JSX.Element {
   const {id} = useParams();
   const offers = useAppSelector((state) => state.offers);
-  const foundOffer = offers!.find((offer) => offer.id === id);
-  const nearbyOffers = offers!.filter((offer) => offer.id !== id && offer.city.name === foundOffer?.city.name);
+  const foundOffer = offers.find((offer) => offer.id === id);
+  const nearbyOffers = offers.filter((offer) => offer.id !== id && offer.city.name === foundOffer?.city.name);
 
   if (!foundOffer) {
     return <NotFoundScreen/>;
@@ -150,7 +150,7 @@ export default function OfferScreen(): JSX.Element {
             </div>
           </div>
           <section className="offer__map map">
-            <Map location={foundOffer.city.location} offers={offers!} selectedOffer={foundOffer}/>
+            <Map location={foundOffer.city.location} offers={offers} selectedOffer={foundOffer}/>
           </section>
         </section>
         <NearbyOfferList nearbyOffers={nearbyOffers}/>

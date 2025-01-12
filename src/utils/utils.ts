@@ -1,5 +1,5 @@
-﻿import {SortOption} from '@/constants/sort-option.ts';
-import {Offer} from '@/api/types.ts';
+﻿import {SortOption} from '@/types/sort-option.ts';
+import {Offer} from '@/types/api.ts';
 
 export function groupBy<TSource, TValue>(
   source: TSource[],

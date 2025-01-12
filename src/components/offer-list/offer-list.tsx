@@ -1,7 +1,7 @@
-﻿import {Offer} from '@/api/types.ts';
-import PlaceCard from '@/components/place-card/place-card.tsx';
+﻿import PlaceCard from '@/components/place-card/place-card.tsx';
 import {useAppDispatch} from '@/components/hooks/use-app-dispatch.tsx';
 import {setSelectedOffer} from '@/store/action.ts';
+import {Offer} from '@/types/api.ts';
 
 export interface OfferListProps {
   offers: Offer[];
