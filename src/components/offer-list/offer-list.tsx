@@ -27,5 +27,7 @@ function OfferList({offers, page}: OfferListProps) {
     </>);
 }
 
-const MemoizedOfferList = memo(OfferList);
+const MemoizedOfferList = memo(OfferList, (prevProps, nextProps) =>
+  prevProps.page === nextProps.page &&
+  prevProps.offers.map((offer) => offer.id).join() === nextProps.offers.map((offer) => offer.id).join());
 export default MemoizedOfferList;

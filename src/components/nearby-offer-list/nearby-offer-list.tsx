@@ -20,5 +20,6 @@ function NearbyOfferList({nearbyOffers}: NearbyOfferListProps) {
     </div>);
 }
 
-const MemoizedNearbyOfferList = memo(NearbyOfferList);
+const MemoizedNearbyOfferList = memo(NearbyOfferList, (prevProps, nextProps) =>
+  prevProps.nearbyOffers.map((offer) => offer.id).join() === nextProps.nearbyOffers.map((offer) => offer.id).join());
 export default MemoizedNearbyOfferList;
