@@ -88,5 +88,6 @@ function PlaceCard({offer, page, width, height}: PlaceCardProps): JSX.Element {
     </article>);
 }
 
-const MemoizedPlaceCard = memo(PlaceCard);
+const MemoizedPlaceCard = memo(PlaceCard, (prevProps, nextProps) =>
+  JSON.stringify(prevProps.offer) === JSON.stringify(nextProps.page));
 export default MemoizedPlaceCard;
