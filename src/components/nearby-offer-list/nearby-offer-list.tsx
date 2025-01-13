@@ -1,6 +1,5 @@
 import OfferList from '@/components/offer-list/offer-list.tsx';
 import {Offer} from '@/types/api.ts';
-import {MAX_NEARBY_OFFERS_COUNT} from '@/constants/settings.ts';
 import {memo} from 'react';
 
 interface NearbyOfferListProps {
@@ -15,7 +14,7 @@ function NearbyOfferList({nearbyOffers}: NearbyOfferListProps) {
           Other places in the neighbourhood
         </h2>
         <div className="near-places__list places__list">
-          <OfferList offers={nearbyOffers.slice(0, MAX_NEARBY_OFFERS_COUNT)} page={'near-places'}/>
+          <OfferList offers={nearbyOffers} page={'near-places'}/>
         </div>
       </section>
     </div>);
