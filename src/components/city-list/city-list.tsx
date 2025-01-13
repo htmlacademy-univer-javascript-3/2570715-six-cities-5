@@ -1,19 +1,20 @@
-import {setCity} from '@/store/action.ts';
 import {City} from '@/types/api.ts';
 import {useAppSelector} from '@/hooks/use-app-selector.tsx';
 import {useAppDispatch} from '@/hooks/use-app-dispatch.tsx';
 import {memo} from 'react';
+import {getCity} from '@/store/app-data/selectors.ts';
+import {setCity} from '@/store/app-data/app-data.ts';
 
 export interface CityListProps {
   cities: City[];
 }
 
 function CityList({cities}: CityListProps) {
-  const currentCity = useAppSelector((state) => state.city);
+  const currentCity = useAppSelector(getCity);
   const dispatch = useAppDispatch();
 
   const handleCityChoose = (city: City) => {
-    dispatch(setCity({city: city}));
+    dispatch(setCity(city));
   };
 
   return (

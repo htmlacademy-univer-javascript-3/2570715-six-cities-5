@@ -4,13 +4,14 @@ import {useAppSelector} from '@/hooks/use-app-selector.tsx';
 import {AuthorizationStatus} from '@/constants/auth-status.ts';
 import ReviewForm from '@/components/review-form/review-form.tsx';
 import {memo} from 'react';
+import {getAuthorizationStatus} from '@/store/app-user/selectors.ts';
 
 interface ReviewSectionProps {
   comments: Comment[];
 }
 
 function ReviewSection({comments}: ReviewSectionProps) {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return (
     <section className="offer__reviews reviews">
