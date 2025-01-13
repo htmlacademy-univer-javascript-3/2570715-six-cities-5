@@ -12,7 +12,7 @@ function ReviewList({comments}: ReviewListProps) {
   return (
     <ul className="reviews__list">
       {comments
-        .sort(compareComments)
+        .toSorted(compareComments)
         .slice(0, MAX_REVIEWS_COUNT)
         .map((comment) => (
           <li className="reviews__item" key={comment.id}>
