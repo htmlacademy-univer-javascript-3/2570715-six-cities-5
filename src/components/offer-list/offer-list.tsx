@@ -1,7 +1,6 @@
 ﻿import PlaceCard from '@/components/place-card/place-card.tsx';
 import {Offer} from '@/types/api.ts';
 import {useAppDispatch} from '@/hooks/use-app-dispatch.tsx';
-import {memo} from 'react';
 import {setSelectedOffer} from '@/store/app-data/app-data.ts';
 
 export interface OfferListProps {
@@ -9,7 +8,7 @@ export interface OfferListProps {
   page: string;
 }
 
-function OfferList({offers, page}: OfferListProps) {
+export default function OfferList({offers, page}: OfferListProps) {
   const dispatch = useAppDispatch();
   const handleOfferUpdate = (offer: Offer | undefined) => {
     dispatch(setSelectedOffer(offer));
@@ -26,8 +25,3 @@ function OfferList({offers, page}: OfferListProps) {
       ))}
     </>);
 }
-
-const MemoizedOfferList = memo(OfferList, (prevProps, nextProps) =>
-  prevProps.page === nextProps.page &&
-  prevProps.offers.map((offer) => offer.id).join() === nextProps.offers.map((offer) => offer.id).join());
-export default MemoizedOfferList;
