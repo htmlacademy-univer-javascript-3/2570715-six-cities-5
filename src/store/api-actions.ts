@@ -101,7 +101,7 @@ export const logoutAction = createAsyncThunk<void, undefined, {
     await api.delete(APIRoute.Logout);
     dropToken();
     dispatch(clearFavoriteOffersInChosenOffer());
-    dispatch(clearFavoriteOffersInMainOffers())
+    dispatch(clearFavoriteOffersInMainOffers());
     dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
   },
 );
